@@ -1864,6 +1864,10 @@ head(new.dat) </code></pre>
 ## 4     64    6     1    1              59            76
 ## 5     76    8     1    1              64            93
 ## 6     93   10     1    1              76           106</code></pre>
+</div>
+<div id="remove-duplicates" class="section level5">
+<h5>Remove duplicates</h5>
+<pre class="r"><code>new.dat = ChickWeight %&gt;% distinct()</code></pre>
 <p><strong>Note:</strong> <code>dplyr</code> chains can be connected.
 For example:</p>
 <pre class="r"><code>new.dat = ChickWeight %&gt;% select(-Diet) %&gt;% mutate_at(vars(Chick), as.factor) %&gt;% filter(weight &gt; 60)</code></pre>
