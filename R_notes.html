@@ -1741,6 +1741,12 @@ new.dat = ChickWeight %&gt;% filter(Diet!=1)  # keep only the observations for w
 new.dat = ChickWeight %&gt;% filter(!(Diet %in% c(1,3)))  # keep only the observations for which the values of the variable &#39;Diet&#39; is NOT 1 or 3
 new.dat = ChickWeight %&gt;% filter(Diet %in% c(1,3), weight &gt; 60)  # keep only the observations for which the values of the variable &#39;Diet&#39; is 1 or 3 and the values for the variable &#39;weight&#39; is greater than 60</code></pre>
 </div>
+<div id="select-rows-package-dplyr" class="section level5">
+<h5>Select rows (package: <code>dplyr</code>)</h5>
+<pre class="r"><code>new.dat = ChickWeight %&gt;% slice(n())  # select the last row
+new.dat = ChickWeight %&gt;% slice(3:n())  # select all rows except for the first two
+new.dat = ChickWeight %&gt;% slice_head(n=3)  # select the first three rows</code></pre>
+</div>
 <div id="select-columns-package-dplyr" class="section level5">
 <h5>Select columns (package: <code>dplyr</code>)</h5>
 <pre class="r"><code>new.dat = ChickWeight %&gt;% select(weight, Time)  # keep only the columns &#39;weight&#39; and &#39;Time&#39;
