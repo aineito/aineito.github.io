@@ -1731,8 +1731,9 @@ Diet) (package: <code>Rmisc</code>)</h5>
 <div id="convert-a-column-columns-into-factornumeric-package-dplyr" class="section level5">
 <h5>Convert a column/ columns into factor/numeric (package:
 <code>dplyr</code>)</h5>
-<pre class="r"><code>new.dat = ChickWeight %&gt;% mutate_at(vars(Chick), as.factor)
-new.dat = ChickWeight %&gt;% mutate_at(vars(Time), as.numeric)</code></pre>
+<pre class="r"><code>new.dat = ChickWeight %&gt;% mutate_at(vars(Chick), as.factor) # convert column &#39;Chick&#39; to factor
+new.dat = ChickWeight %&gt;% mutate_all(funs(as.factor)) # convert all columns to factor
+new.dat = ChickWeight %&gt;% mutate_at(vars(Time), as.numeric) # convert &#39;Time&#39; to numeric</code></pre>
 </div>
 <div id="filter-observations-package-dplyr" class="section level5">
 <h5>Filter observations (package: <code>dplyr</code>)</h5>
@@ -1801,6 +1802,27 @@ head(longer.dat) # data frame after conversion</code></pre>
 ## 4 1     6         64
 ## 5 1     8         76
 ## 6 1     10        93</code></pre>
+</div>
+<div id="separate-a-text-column-to-multiple-columns-text-to-columns-in-excel-package-tibbletidyr" class="section level5">
+<h5>Separate a text column to multiple columns (Text to Columns in
+Excel) (package: <code>tibble</code>,<code>tidyr</code>)</h5>
+<pre class="r"><code>tibble(Item=1:4, Condition=c(&quot;1_A&quot;,&quot;1_B&quot;,&quot;2_A&quot;,&quot;2_B&quot;)) # example data</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##    Item Condition
+##   &lt;int&gt; &lt;chr&gt;    
+## 1     1 1_A      
+## 2     2 1_B      
+## 3     3 2_A      
+## 4     4 2_B</code></pre>
+<pre class="r"><code>tibble(Item=1:4, Condition=c(&quot;1_A&quot;,&quot;1_B&quot;,&quot;2_A&quot;,&quot;2_B&quot;)) %&gt;% 
+  separate(Condition,c(&quot;Number&quot;,&quot;Alphabet&quot;),sep=&quot;_&quot;) # separate Condition column into number and alphabet</code></pre>
+<pre><code>## # A tibble: 4 x 3
+##    Item Number Alphabet
+##   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   
+## 1     1 1      A       
+## 2     2 1      B       
+## 3     3 2      A       
+## 4     4 2      B</code></pre>
 </div>
 <div id="change-the-names-of-variables-new_name-old_name-package-dplyr" class="section level5">
 <h5>Change the names of variables (new_name = old_name) (package:
@@ -1936,17 +1958,9 @@ dat.na.dropped = new.dat %&gt;% drop_na() # drop row if any of the column contai
 </div>
 <div id="replace-na-with-0-across-multiple-columns" class="section level5">
 <h5>Replace NA with 0 across multiple columns</h5>
-<pre class="r"><code>dat.na.replaced = new.dat %&gt;% mutate_at(vars(weight,Time), ~replace_na(., 0))
+<pre class="r"><code>dat.na.replaced = new.dat %&gt;% mutate_at(vars(weight,Time), ~replace_na(., 0)) # replace NA in &#39;weight&#39; and &#39;Time&#39; columns with 0
 
-summary(dat.na.replaced) # to check</code></pre>
-<pre><code>##      weight         Time           Chick     Diet        zWeight.V1     
-##  Min.   :  0   Min.   : 0.00   13     : 12   1:220   Min.   :-1.398584  
-##  1st Qu.: 61   1st Qu.: 4.00   9      : 12   2:120   1st Qu.:-0.818295  
-##  Median :100   Median :10.00   20     : 12   3:120   Median :-0.213647  
-##  Mean   :115   Mean   :10.72   10     : 12   4:118   Mean   : 0.000000  
-##  3rd Qu.:157   3rd Qu.:16.00   17     : 12           3rd Qu.: 0.622965  
-##  Max.   :341   Max.   :21.00   19     : 12           Max.   : 3.571600  
-##                                (Other):506</code></pre>
+dat.na.replaced = new.dat %&gt;% mutate_all(~replace_na(., 0)) # replace NA in all columns with 0</code></pre>
 </div>
 </div>
 <div id="plot" class="section level3">
