@@ -210,6 +210,12 @@ iframe {
   text-align: left;
 }
 
+n0 {
+  padding: 0 10px 0 10px;
+  display: block;
+}
+
+
 /*---- #contents ul { margin: 1em 0 1em 20px; } ----*/
 
 #contents li {
@@ -243,7 +249,7 @@ td.table_head {
   padding: 7px;
   text-align: right;
   background-color: #ffffff;
-  width: 70px;
+  width: 50px;
 }
 
 td.table_left {
@@ -437,6 +443,7 @@ td.table_line {
     font-weight: bold;
   }
 
+
   #contents ul { margin: 1em 0 1em 16px; }
   #contents li { margin-bottom: 0.5em; }
 
@@ -467,7 +474,7 @@ td.table_line {
     padding: 7px;
     text-align: right;
     background-color: #ffffff;
-    width: 70px;
+    width: 50px;
   }
 
   td.table_left {
