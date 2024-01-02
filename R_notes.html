@@ -1509,6 +1509,13 @@ install.packages(c(&#39;tidyverse&#39;,&#39;lme4&#39;))</code></pre>
  
 installed.packages()[names(sessionInfo()$otherPkgs), &quot;Version&quot;] # for all the loaded packages</code></pre>
 </div>
+<div id="check-conflicts" class="section level5">
+<h5>Check conflicts</h5>
+<p>This reports on objects that exist with the same name in two or more
+places. Useful for finding an object that may be masking any
+functions.</p>
+<pre class="r"><code>conflicts()</code></pre>
+</div>
 </div>
 <div id="import-export-data" class="section level3">
 <h3>Import/ Export data</h3>
