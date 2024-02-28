@@ -1996,8 +1996,8 @@ geom_bar(position=position_dodge(),stat=&quot;identity&quot;,colour=&quot;black&
 </div>
 <div id="tables" class="section level3">
 <h3>Tables</h3>
-<div id="summary-table-of-a-dataset-package-knitr" class="section level4">
-<h4>Summary table of a dataset (package: <code>knitr</code>)</h4>
+<div id="summary-table-of-a-dataset-package-knitr" class="section level5">
+<h5>Summary table of a dataset (package: <code>knitr</code>)</h5>
 <pre class="r"><code>knitr::kable(summary(sleepstudy)) # &#39;sleepstudy&#39; data from the &#39;lme4&#39; package</code></pre>
 <table>
 <thead>
@@ -2053,6 +2053,67 @@ geom_bar(position=position_dodge(),stat=&quot;identity&quot;,colour=&quot;black&
 </tr>
 </tbody>
 </table>
+</div>
+<div id="frequency-table-package-dplyr" class="section level4">
+<h4>Frequency table (package: <code>dplyr</code>)</h4>
+<pre class="r"><code>ChickWeight %&gt;% count(Time, Diet) %&gt;% 
+  mutate(prop = prop.table(n))</code></pre>
+<pre><code>##    Time Diet  n       prop
+## 1     0    1 20 0.03460208
+## 2     0    2 10 0.01730104
+## 3     0    3 10 0.01730104
+## 4     0    4 10 0.01730104
+## 5     2    1 20 0.03460208
+## 6     2    2 10 0.01730104
+## 7     2    3 10 0.01730104
+## 8     2    4 10 0.01730104
+## 9     4    1 19 0.03287197
+## 10    4    2 10 0.01730104
+## 11    4    3 10 0.01730104
+## 12    4    4 10 0.01730104
+## 13    6    1 19 0.03287197
+## 14    6    2 10 0.01730104
+## 15    6    3 10 0.01730104
+## 16    6    4 10 0.01730104
+## 17    8    1 19 0.03287197
+## 18    8    2 10 0.01730104
+## 19    8    3 10 0.01730104
+## 20    8    4 10 0.01730104
+## 21   10    1 19 0.03287197
+## 22   10    2 10 0.01730104
+## 23   10    3 10 0.01730104
+## 24   10    4 10 0.01730104
+## 25   12    1 19 0.03287197
+## 26   12    2 10 0.01730104
+## 27   12    3 10 0.01730104
+## 28   12    4 10 0.01730104
+## 29   14    1 18 0.03114187
+## 30   14    2 10 0.01730104
+## 31   14    3 10 0.01730104
+## 32   14    4 10 0.01730104
+## 33   16    1 17 0.02941176
+## 34   16    2 10 0.01730104
+## 35   16    3 10 0.01730104
+## 36   16    4 10 0.01730104
+## 37   18    1 17 0.02941176
+## 38   18    2 10 0.01730104
+## 39   18    3 10 0.01730104
+## 40   18    4 10 0.01730104
+## 41   20    1 17 0.02941176
+## 42   20    2 10 0.01730104
+## 43   20    3 10 0.01730104
+## 44   20    4  9 0.01557093
+## 45   21    1 16 0.02768166
+## 46   21    2 10 0.01730104
+## 47   21    3 10 0.01730104
+## 48   21    4  9 0.01557093</code></pre>
+<pre class="r"><code>ChickWeight %&gt;% count(Diet) %&gt;% 
+  mutate(prop = prop.table(n))</code></pre>
+<pre><code>##   Diet   n      prop
+## 1    1 220 0.3806228
+## 2    2 120 0.2076125
+## 3    3 120 0.2076125
+## 4    4 118 0.2041522</code></pre>
 <div id="linear-mixed-effects-model-output-parameter-estimates-standard-errors-t-statistics-package-knitr" class="section level5">
 <h5>Linear-mixed effects model output (parameter estimates, standard
 errors &amp; t-statistics) (package: <code>knitr</code>)</h5>
