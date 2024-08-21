@@ -2176,8 +2176,8 @@ knitr::kable(coef.table, digits=2) # round off to 2 decimal places </code></pre>
 </div>
 </div>
 </div>
-<div id="special-characters" class="section level3">
-<h3>Special characters</h3>
+<div id="deal-with-characters" class="section level3">
+<h3>Deal with characters</h3>
 <div id="convert-japanese-full-width-characters-zenkaku-into-half-width-hankaku-package-stringi" class="section level5">
 <h5>Convert Japanese full-width characters (Zenkaku) into half-width
 (Hankaku) (package: <code>stringi</code>)</h5>
@@ -2201,6 +2201,11 @@ str_replace_all(example,c(&#39;\\/.*&#39;=&#39;&#39;, # remove all characters af
 <p><strong>Note:</strong> The above codes can be embedded in
 <code>dplyr</code> chain</p>
 <pre class="r"><code>dat = dat %&gt;% mutate(Age=stri_trans_nfkc(Age), Values=str_replace_all(Values,&#39;[[:punct:]]&#39;=&#39;&#39;))</code></pre>
+</div>
+<div id="compute-levenshtein-distance-package-stringdist" class="section level5">
+<h5>Compute Levenshtein distance (package: <code>stringdist</code>)</h5>
+<pre class="r"><code>stringdist(&quot;cat&quot;, &quot;cap&quot;, method = &quot;lv&quot;)</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
 
 </div>
