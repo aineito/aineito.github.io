@@ -1503,8 +1503,12 @@ install.packages(c(&#39;tidyverse&#39;,&#39;lme4&#39;))</code></pre>
 <h5>Load a package</h5>
 <pre class="r"><code>require(tidyverse)</code></pre>
 </div>
-<div id="find-out-which-package-version-is-loaded-in-r" class="section level5">
-<h5>Find out which package version is loaded in R</h5>
+<div id="check-r-version" class="section level5">
+<h5>Check R version</h5>
+<pre class="r"><code>R.version.string</code></pre>
+</div>
+<div id="check-which-package-version-is-loaded-in-r" class="section level5">
+<h5>Check which package version is loaded in R</h5>
 <pre class="r"><code>packageVersion(&#39;tidyverse&#39;) # for &#39;tidyverse&#39; package
  
 installed.packages()[names(sessionInfo()$otherPkgs), &quot;Version&quot;] # for all the loaded packages</code></pre>
@@ -1543,6 +1547,10 @@ order mark.</p>
 <div id="save-data-as-an-.rds-file" class="section level5">
 <h5>Save data as an .rds file</h5>
 <pre class="r"><code>save(my.data, file=&#39;file_name.rds&#39;)</code></pre>
+</div>
+<div id="save-all-data-in-the-environment-as-an-.rds-file" class="section level5">
+<h5>Save all data in the environment as an .rds file</h5>
+<pre class="r"><code>save(list=ls(), file=&quot;file_name.rds&quot;)</code></pre>
 </div>
 <div id="save-all-lmermod-objects-lme-model-output-as-an-.rds-file-with-todays-date-e.g.-30jun2022" class="section level5">
 <h5>Save all ‘lmerMod’ objects (LME model output) as an .rds file with
