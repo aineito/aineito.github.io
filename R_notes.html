@@ -1916,11 +1916,10 @@ head(new.dat)</code></pre>
 the group mean (e.g, <code>NA</code> if <code>weight</code> deviates
 more than 2.5 SDs from the mean of the <code>Diet</code> group)
 (package: <code>dplyr</code>)</h5>
-<pre class="r"><code>new.dat = ChickWeight %&gt;% group_by(Diet) %&gt;% mutate(zWeight = scale(weight), weight = replace(weight, which(!between(zWeight, -2.5, 2.5)), NA)) 
+<pre class="r"><code>new.dat = ChickWeight %&gt;% group_by(Diet) %&gt;% mutate(zWeight = scale(weight), weight = replace(weight, which(!between(zWeight, -2.5, 2.5)), NA)) %&gt;% ungroup()
 
 new.dat %&gt;% filter(is.na(weight)) # check rows with `NA`</code></pre>
 <pre><code>## # A tibble: 13 × 5
-## # Groups:   Diet [4]
 ##    weight  Time Chick Diet  zWeight[,1]
 ##     &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;fct&gt;       &lt;dbl&gt;
 ##  1     NA    18 7     1            2.60
@@ -1941,6 +1940,23 @@ new.dat %&gt;% filter(is.na(weight)) # check rows with `NA`</code></pre>
 <h5>Compute the proportion of NA</h5>
 <pre class="r"><code>sum(is.na(new.dat$weight))/length(new.dat$weight)</code></pre>
 <pre><code>## [1] 0.02249135</code></pre>
+<pre class="r"><code>new.dat %&gt;% summarise(na_sum=sum(is.na(weight)), na_prop=sum(is.na(weight))/length(weight)) # count &amp; proportion</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   na_sum na_prop
+##    &lt;int&gt;   &lt;dbl&gt;
+## 1     13  0.0225</code></pre>
+</div>
+<div id="compute-the-proportion-of-na-per-group-package-dplyr" class="section level5">
+<h5>Compute the proportion of NA per group (package:
+<code>dplyr</code>)</h5>
+<pre class="r"><code>new.dat %&gt;% group_by(Diet) %&gt;% summarise(na_sum=sum(is.na(weight)), na_prop=sum(is.na(weight))/length(weight))</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   Diet  na_sum na_prop
+##   &lt;fct&gt;  &lt;int&gt;   &lt;dbl&gt;
+## 1 1          6 0.0273 
+## 2 2          4 0.0333 
+## 3 3          2 0.0167 
+## 4 4          1 0.00847</code></pre>
 </div>
 <div id="drop-rows-containing-na-package-tidyr" class="section level5">
 <h5>Drop rows containing NA (package: <code>tidyr</code>)</h5>
